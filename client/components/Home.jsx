@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 
-import { getMtgApi } from '../apis/mtgGetApi'
+import { getMtgApi, getFindApi } from '../apis/mtgGetApi'
 
 function Mtg() {
   const [mtgArr, setMtgObj] = useState(null)
+  const [mtgName, setName] = useState('')
 
   const clickHander = () => {
     return getMtgApi()
@@ -13,33 +14,33 @@ function Mtg() {
       })
   }
 
-  // const handleChange = (evt) => {
-  //   setMtgObj({
-  //     [evt.target.name]: evt.target.value,
-  //   })
-  //   console.log(evt.target.value)
-  // }
+  const handleChange = (evt) => {
+    setName(evt.target.value)
+    console.log(evt.target.value)
+  }
 
-  // const handelSubmit = (name) => {
-  //   return getFindApi(name)
-  //     .then((obj) => setMtgObj(obj.cards))
-  //     .catch((err) => {
-  //       console.error(err.message)
-  //     })
-  // }
+  const handelSubmit = (evt) => {
+    evt.preventDefault()
+    return getFindApi(mtgName)
+      .then((obj) => setMtgObj(obj.cards))
+      .catch((err) => {
+        console.error(err.message)
+      })
+  }
 
   return (
     <div className="flex-child">
       <h1>MTG</h1>
       <button onClick={clickHander}>Get cards</button>
-      {/* <form onSubmit={handelSubmit}>
+      <form onSubmit={handelSubmit}>
         <div>
           <label htmlFor="name" className="name-label">
             Name:{' '}
           </label>
           <input type="text" id="name" name="name" onChange={handleChange} />
+          <button onClick={handelSubmit}>hit it</button>
         </div>
-      </form> */}
+      </form>
       <div className="card">
         {mtgArr?.map((cards, idx) => {
           return (
