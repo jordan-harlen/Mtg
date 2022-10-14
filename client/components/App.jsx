@@ -1,11 +1,14 @@
 import React from 'react'
 
+import Mtg from './Home'
+
 function App() {
   return (
     <>
-      <header className="header">
-        <h1>My Collection</h1>
-      </header>
+      <header className="header"></header>
+      <div>
+        <Mtg />
+      </div>
       <section className="main">{/* add your code here */}</section>
     </>
   )
