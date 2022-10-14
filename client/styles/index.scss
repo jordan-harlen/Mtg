@@ -7,4 +7,24 @@ body {
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.card{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.2em;
+  justify-content: space-around;
+  & img {
+    min-width: 250px;
+    max-width: 250px;
+    object-fit: cover;
+    margin-bottom: 5px;
+  }
+}
 
+.card-wapper{
+  min-width: 320px;
+  margin: 15px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 3px 3px 2px #21222228;
+  text-align: center;
+}
