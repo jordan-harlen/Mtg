@@ -24,7 +24,12 @@ function Mtg() {
 
   async function previousPage() {
     const page = (await pageCounter) - 1
-    setPageCounter(page)
+    if (pageCounter === 0) {
+      setPageCounter(1)
+    } else {
+      setPageCounter(page)
+    }
+    console.log(pageCounter)
   }
 
   return (
