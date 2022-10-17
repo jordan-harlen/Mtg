@@ -1,13 +1,17 @@
 import React from 'react'
 
-import Mtg from './Home'
+import Home from './Home'
+import AllCards from './AllCards'
+import Search from './Search'
 
 function App() {
   return (
     <>
       <header className="header"></header>
       <div>
-        <Mtg />
+        <Home />
+        <Search />
+        <AllCards />
       </div>
       <section className="main">{/* add your code here */}</section>
     </>
