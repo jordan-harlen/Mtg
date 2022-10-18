@@ -34,8 +34,10 @@ function Mtg() {
 
   return (
     <div className="flex-child">
-      <button onClick={previousPage}>Previous</button>
-      <button onClick={nextPage}>Next</button>
+      <div className="page-buttons">
+        <button onClick={previousPage}>Previous</button>
+        <button onClick={nextPage}>Next</button>
+      </div>
       <div className="card">
         {mtgArr?.map((cards, idx) => {
           return (
@@ -52,6 +54,10 @@ function Mtg() {
             </div>
           )
         })}
+      </div>
+      <div className="page-buttons">
+        <button onClick={previousPage}>Previous</button>
+        <button onClick={nextPage}>Next</button>
       </div>
     </div>
   )

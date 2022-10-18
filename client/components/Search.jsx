@@ -22,15 +22,20 @@ function Mtg() {
 
   return (
     <div className="search">
-      <form onSubmit={handelSubmit}>
-        <div>
+      <div className="search-form">
+        {!mtgArr ? (
+          <h2>Please search for a card.</h2>
+        ) : (
+          <h2>Search for another card.</h2>
+        )}
+        <form onSubmit={handelSubmit}>
           <label htmlFor="name" className="name-label">
             Name:{' '}
           </label>
           <input type="text" id="name" name="name" onChange={handleChange} />
-          <button onClick={handelSubmit}>hit it</button>
-        </div>
-      </form>
+          <button onClick={handelSubmit}>Search</button>
+        </form>
+      </div>
       <div className="card">
         {mtgArr?.map((cards, idx) => {
           return (
