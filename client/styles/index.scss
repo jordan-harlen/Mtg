@@ -1,9 +1,16 @@
+@import "./home.scss";
+@import "./nav.scss";
+
+header {
+  max-width: 100%;
+}
+
 body {
   position: absolute;
   top: 0;
   left: 0;
   margin: 0;
-  padding: 20px;
+  width: 100%;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
