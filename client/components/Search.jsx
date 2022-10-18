@@ -21,7 +21,7 @@ function Mtg() {
   }
 
   return (
-    <div className="flex-child">
+    <div className="search">
       <form onSubmit={handelSubmit}>
         <div>
           <label htmlFor="name" className="name-label">
