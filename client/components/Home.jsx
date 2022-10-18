@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Home() {
   const auth = useSelector((state) => state.auth)
   return (
-    <>
+    <div className="home">
       <h1>MTG Deckbuilder</h1>
       <p>Welcome to the MTG Deckbuilder! Come make a deck!</p>
       <div className="home-login">
@@ -27,7 +27,7 @@ function Home() {
           )}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
