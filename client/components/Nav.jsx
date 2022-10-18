@@ -15,22 +15,26 @@ function Nav() {
   }
   return (
     <>
+      <div className="nav-title">
+        <h1>MTG Deckbuilder</h1>
+      </div>
       <div className="nav-container">
         <div className="nav-main">
           <Link to="/">Home</Link>
           <Link to="/allcards">All Cards</Link>
           <Link to="/search">Search</Link>
-          <div className="nav-log">
-            {auth.isAuthenticated ? (
-              <>
-                <Link to="/" onClick={logout} className="title-font">
-                  Logout
-                </Link>
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
+          {auth.isAuthenticated ? (
+            <>
+              <Link to="/" onClick={logout} className="title-font">
+                Logout
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </>
+          )}
         </div>
       </div>
     </>
