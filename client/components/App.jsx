@@ -31,7 +31,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/allcards" element={<AllCards />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/userdeck" element={<UserDeck />} />
+        <Route path="/userdeck/:id" element={<UserDeck />} />
       </Routes>
       <section className="main">{/* add your code here */}</section>
     </>
