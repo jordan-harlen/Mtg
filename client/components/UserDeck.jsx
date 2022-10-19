@@ -4,44 +4,13 @@ import { getMtgApi, getUserDeck } from '../apis/mtgGetApi'
 
 function Mtg() {
   const [mtgArr, setMtgArr] = useState(null)
-  const [pageCounter, setPageCounter] = useState(1)
 
   useEffect(() => {
-    getMtgApi(pageCounter)
-      .then((res) => {
-        setMtgArr(res.cards)
-        console.log(mtgArr)
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
-  }, [pageCounter])
-
-  async function nextPage() {
-    const page = (await pageCounter) + 1
-    setPageCounter(page)
-  }
-
-  async function previousPage() {
-    const page = (await pageCounter) - 1
-    if (pageCounter === 0) {
-      setPageCounter(1)
-    } else {
-      setPageCounter(page)
-    }
-    console.log(pageCounter)
-  }
-
-  useEffect(() => {
-    getUserDeck(1)
+    getMtgApi()
   }, [])
 
   return (
     <div className="flex-child">
-      <div className="page-buttons">
-        <button onClick={previousPage}>Previous</button>
-        <button onClick={nextPage}>Next</button>
-      </div>
       <div className="card">
         {mtgArr?.map((cards, idx) => {
           return (
@@ -61,10 +30,6 @@ function Mtg() {
             </div>
           )
         })}
-      </div>
-      <div className="page-buttons">
-        <button onClick={previousPage}>Previous</button>
-        <button onClick={nextPage}>Next</button>
       </div>
     </div>
   )

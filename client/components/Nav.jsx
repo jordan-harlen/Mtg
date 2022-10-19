@@ -25,6 +25,7 @@ function Nav() {
           <Link to="/search">Search</Link>
           {auth.isAuthenticated ? (
             <>
+              <Link to="/userdeck">My Deck</Link>
               <Link to="/" onClick={logout} className="title-font">
                 Logout
               </Link>
