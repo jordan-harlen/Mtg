@@ -4,9 +4,9 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable('myDeck', (table) => {
-    table.increments('cardId').primary()
+    table.increments('id').primary()
     table.integer('user_id')
-    table.string('id')
+    table.string('card_id')
   })
 }
 
