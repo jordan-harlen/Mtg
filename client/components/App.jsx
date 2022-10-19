@@ -8,6 +8,7 @@ import Register from './Register'
 import Nav from './Nav'
 import AllCards from './AllCards'
 import Search from './Search'
+import UserDeck from './UserDeck'
 
 import { checkAuth } from '../actions/auth'
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/allcards" element={<AllCards />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/userdeck" element={<UserDeck />} />
       </Routes>
       <section className="main">{/* add your code here */}</section>
     </>
