@@ -1,32 +1,76 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
-import { getMtgApi, getUserDeck } from '../apis/mtgGetApi'
+import { getMtgApi, getUserDeck, getCardById } from '../apis/mtgGetApi'
 
-function Mtg() {
+function UserDeck() {
   const [mtgArr, setMtgArr] = useState(null)
+  const [cardId, setCardId] = useState([])
+  const [userDeck, setUserDeck] = useState([])
+
+  let { id } = useParams()
 
   useEffect(() => {
     getMtgApi()
+      .then((res) => {
+        setMtgArr(res.cards)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
   }, [])
+
+  useEffect(() => {
+    getUserDeck(id)
+      .then((res) => {
+        const newArr = []
+        res.map((cards) => {
+          newArr.push(cards.card_id)
+        })
+        setCardId(newArr)
+      })
+      .then(() => {
+        console.log('logging cardId' + cardId)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }, [])
+
+  useEffect(() => {
+    console.log(cardId)
+    const newArr = []
+    cardId.map((id) => {
+      getCardById(id)
+        .then((res) => {
+          newArr.push(res.cards)
+          setUserDeck(newArr)
+        })
+        .catch((err) => {
+          console.log(err.message)
+        })
+    })
+  }, [cardId])
+
+  useEffect(() => {
+    console.log(userDeck)
+  }, [userDeck])
 
   return (
     <div className="flex-child">
       <div className="card">
-        {mtgArr?.map((cards, idx) => {
+        {userDeck?.map((cards, idx) => {
           return (
             <div className="card-wapper" key={idx}>
-              <p>{cards.name}</p>
-              {cards.imageUrl ? (
-                <img src={cards.imageUrl} alt={cards.name} />
+              <p>{cards?.name}</p>
+              {cards?.imageUrl ? (
+                <img src={cards?.imageUrl} alt={cards?.name} />
               ) : (
                 <img
                   src="https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Magic_the_gathering-card_back.jpg/200px-Magic_the_gathering-card_back.jpg"
                   alt="back of the card"
                 />
               )}
-              <div className="add-button">
-                <button>Add</button>
-              </div>
             </div>
           )
         })}
@@ -35,4 +79,4 @@ function Mtg() {
   )
 }
 
-export default Mtg
+export default UserDeck

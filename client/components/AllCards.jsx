@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { getMtgApi, getUserDeck } from '../apis/mtgGetApi'
+import { getMtgApi } from '../apis/mtgGetApi'
 
 function Mtg() {
   const [mtgArr, setMtgArr] = useState(null)
@@ -31,10 +31,6 @@ function Mtg() {
     }
     console.log(pageCounter)
   }
-
-  useEffect(() => {
-    getUserDeck(1)
-  }, [])
 
   return (
     <div className="flex-child">

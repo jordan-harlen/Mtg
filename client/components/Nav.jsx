@@ -13,6 +13,7 @@ function Nav() {
     const confirmSuccess = () => navigateTo('/')
     dispatch(logoutUser(confirmSuccess))
   }
+
   return (
     <>
       <div className="nav-title">
@@ -25,7 +26,7 @@ function Nav() {
           <Link to="/search">Search</Link>
           {auth.isAuthenticated ? (
             <>
-              <Link to="/userdeck">My Deck</Link>
+              <Link to={`/userdeck/${auth.user.id}`}>My Deck</Link>
               <Link to="/" onClick={logout} className="title-font">
                 Logout
               </Link>
