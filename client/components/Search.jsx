@@ -49,6 +49,9 @@ function Mtg() {
                   alt="back of the card"
                 />
               )}
+              <div>
+                <button>ADD</button>
+              </div>
             </div>
           )
         })}
