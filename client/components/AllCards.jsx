@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 
-import { getMtgApi } from '../apis/mtgGetApi'
+import { getCardsByPage } from '../apis/mtgApi'
 
 function Mtg() {
-  const [mtgArr, setMtgArr] = useState(null)
+  const [cardsPage, setCardsPage] = useState(null)
   const [pageCounter, setPageCounter] = useState(1)
 
   useEffect(() => {
-    getMtgApi(pageCounter)
+    getCardsByPage(pageCounter)
       .then((res) => {
-        setMtgArr(res.cards)
-        console.log(mtgArr)
+        setCardsPage(res.cards)
       })
       .catch((err) => {
         console.log(err.message)
@@ -29,7 +28,6 @@ function Mtg() {
     } else {
       setPageCounter(page)
     }
-    console.log(pageCounter)
   }
 
   return (
@@ -39,7 +37,7 @@ function Mtg() {
         <button onClick={nextPage}>Next</button>
       </div>
       <div className="card">
-        {mtgArr?.map((cards, idx) => {
+        {cardsPage?.map((cards, idx) => {
           return (
             <div className="card-wapper" key={idx}>
               <p>{cards.name}</p>
