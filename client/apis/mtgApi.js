@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-export function getMtgApi(num) {
+export function getCardsByPage(num) {
   return request
     .get(`https://api.magicthegathering.io/v1/cards?page=${num}`)
     .then((res) => {
@@ -11,7 +11,7 @@ export function getMtgApi(num) {
     })
 }
 
-export function getFindApi(name) {
+export function getCardByName(name) {
   return request
     .get(`https://api.magicthegathering.io/v1/cards?name=${name}`)
     .then((res) => {
@@ -25,17 +25,6 @@ export function getFindApi(name) {
 export function getCardById(id) {
   return request
     .get(`https://api.magicthegathering.io/v1/cards?id=${id}`)
-    .then((res) => {
-      return res.body
-    })
-    .catch((err) => {
-      console.log('Err message: ' + err.message)
-    })
-}
-
-export function getAllCardNames() {
-  return request
-    .get('https://api.scryfall.com/catalog/card-names')
     .then((res) => {
       return res.body
     })
