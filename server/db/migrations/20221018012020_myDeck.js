@@ -8,6 +8,10 @@ exports.up = function (knex) {
     table.integer('user_id')
     table.string('card_id')
     table.string('name')
+    table.integer('cmc')
+    table.string('manaCost')
+    table.string('colors')
+    table.string('type')
     table.string('imageUrl')
   })
 }

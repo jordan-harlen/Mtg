@@ -37,6 +37,10 @@ function Mtg() {
       user_id: id,
       card_id: cardData.id,
       name: cardData.name,
+      cmc: cardData.cmc,
+      manaCost: cardData.manaCost,
+      colors: cardData.colors,
+      type: cardData.type,
       imageUrl: cardData.imageUrl,
     }
     return savedCard(id, data)

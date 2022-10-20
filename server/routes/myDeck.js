@@ -5,12 +5,9 @@ const db = require('../db/db')
 
 router.get('/saved/:userId', (req, res) => {
   const userId = req.params.userId
-  //const cardId = req.body.card_id
-
 
   db.getUserDeck(userId)
     .then((myDeck) => {
-      //console.log(res.json(myDeck))
       res.json(myDeck)
     })
     .catch((err) => {
@@ -20,11 +17,15 @@ router.get('/saved/:userId', (req, res) => {
 
 router.post('/saved/:userId', (req, res) => {
   const user_id = req.params.userId
-  const { card_id, name, imageUrl } = req.body
+  const { card_id, name, cmc, manaCost, colors, type, imageUrl } = req.body
   const postData = {
     user_id,
     card_id,
     name,
+    cmc,
+    manaCost,
+    colors,
+    type,
     imageUrl
   }
 
