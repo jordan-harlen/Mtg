@@ -4,6 +4,7 @@ export function getCardsByPage(num) {
   return request
     .get(`https://api.magicthegathering.io/v1/cards?page=${num}`)
     .then((res) => {
+      //console.log(res.body);
       return res.body
     })
     .catch((err) => {
@@ -46,8 +47,6 @@ export function getUserDeck(id) {
 }
 
 export function savedCard(id, newCard) {
-  //const data = { id, newCard }
-  console.log(newCard)
   return request
     .post(`/api/v1/myDeck/saved/${id}`)
     .send(newCard)
