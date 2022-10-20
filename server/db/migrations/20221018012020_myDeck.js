@@ -7,6 +7,8 @@ exports.up = function (knex) {
     table.increments('id').primary()
     table.integer('user_id')
     table.string('card_id')
+    table.string('name')
+    table.string('img_url')
   })
 }
 

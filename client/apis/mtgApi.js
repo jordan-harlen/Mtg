@@ -37,6 +37,7 @@ export function getUserDeck(id) {
   return request
     .get(`/api/v1/myDeck/saved/${id}`)
     .then((res) => {
+      console.log(res.body)
       return res.body
     })
     .catch((err) => {
