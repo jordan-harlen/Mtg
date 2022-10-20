@@ -7,9 +7,10 @@ async function getUserDeck(userId, db = conn) {
     .select()
 }
 
-async function insertUsersDeck(cardData, db = conn) {
+async function insertUsersDeck(userId, cardData, db = conn) {
   // const data = { user_id: userId, card_id: cardId }
-  return await db('myDeck').select().insert(cardData)
+  console.log(cardData)
+  return await db('myDeck').where('user_id', userId).insert(cardData)
 }
 
 module.exports = {

@@ -46,61 +46,64 @@ function Register() {
   }
 
   return (
-    <form className="register-form" onSubmit={handleSubmit}>
-      <h1 className="title-font">Register</h1>
-      <hr />
-      {auth.errorMessage && <span>{auth.errorMessage}</span>}
-      <label>
-        Username
-        <input
-          required
-          placeholder="User Name"
-          type="text"
-          name="username"
-          autoComplete="username"
-          onChange={handleChange}
-          value={formData.username}
-        />
-      </label>
-      <label>
-        Email Address
-        <input
-          required
-          placeholder="Email Adress"
-          type="text"
-          name="email_address"
-          onChange={handleChange}
-          value={formData.email_address}
-        />
-      </label>
-      <br />
-      <div>
-        <label>
-          Password
-          <input
-            required
-            placeholder="Password"
-            type="password"
-            name="password"
-            autoComplete="new-password"
-            onChange={handleChange}
-            value={formData.password}
-          />
-        </label>
-        <label>
-          Confirm Password
-          <input
-            required
-            type="password"
-            name="confirm_password"
-            autoComplete="new-password"
-            onChange={handleChange}
-            value={formData.confirm_password}
-          />
-        </label>
+    <>
+      <div className="register-title">
+        <h2>Register</h2>
       </div>
-      <input value="Register" type="submit" />
-    </form>
+      <div className="register-form">
+        <form onSubmit={handleSubmit}>
+          {auth.errorMessage && <span>{auth.errorMessage}</span>}
+
+          <label>
+            Username:
+            <input
+              required
+              placeholder="User Name"
+              type="text"
+              name="username"
+              autoComplete="username"
+              onChange={handleChange}
+              value={formData.username}
+            />
+          </label>
+          <label>
+            Email Address:
+            <input
+              required
+              placeholder="Email Adress"
+              type="text"
+              name="email_address"
+              onChange={handleChange}
+              value={formData.email_address}
+            />
+          </label>
+          <label>
+            Password:
+            <input
+              required
+              placeholder="Password"
+              type="password"
+              name="password"
+              autoComplete="new-password"
+              onChange={handleChange}
+              value={formData.password}
+            />
+          </label>
+          <label>
+            Confirm Password:
+            <input
+              required
+              type="password"
+              name="confirm_password"
+              autoComplete="new-password"
+              onChange={handleChange}
+              value={formData.confirm_password}
+            />
+          </label>
+          <input value="Register" type="submit" />
+        </form>
+      </div>
+    </>
   )
 }
 

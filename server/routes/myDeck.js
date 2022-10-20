@@ -19,12 +19,18 @@ router.get('/saved/:userId', (req, res) => {
 })
 
 router.post('/saved/:userId', (req, res) => {
-  const userId = req.params.userId
-  const postId = req.body.card_id
+  const user_id = req.params.userId
+  const { card_id, name, img_url } = req.body
+  const postData = {
+    user_id,
+    card_id,
+    name,
+    img_url
+  }
 
-  db.insertUsersDeck(userId, postId)
+  db.insertUsersDeck(user_id, postData)
     .then(() => {
-      console.log(postId)
+
       res.sendStatus(201)
     })
     .catch((err) => {

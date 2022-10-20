@@ -1,35 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-import { getFindApi, getAllCardNames } from '../apis/mtgGetApi'
+import { getCardByName } from '../apis/mtgApi'
 
 function Search() {
-  const [mtgArr, setMtgObj] = useState(null)
-  const [mtgName, setName] = useState('')
-  const [autoFill, setAutoFill] = useState([])
-
-  useEffect(() => {
-    getAllCardNames()
-      .then((res) => {
-        setAutoFill(res.data)
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
-  }, [])
-
-  useEffect(() => {
-    console.log(mtgArr)
-  }, [mtgArr])
+  const [searchedCards, setSearchedCards] = useState(null)
+  const [cardName, setCardName] = useState('')
 
   const handleChange = (evt) => {
-    setName(evt.target.value)
+    setCardName(evt.target.value)
     console.log(evt.target.value)
   }
 
   const handelSubmit = (evt) => {
     evt.preventDefault()
-    return getFindApi(mtgName)
-      .then((obj) => setMtgObj(obj.cards))
+    return getCardByName(cardName)
+      .then((obj) => setSearchedCards(obj.cards))
       .catch((err) => {
         console.error(err.message)
       })
@@ -38,23 +23,21 @@ function Search() {
   return (
     <div className="search">
       <div className="search-form">
-        {!mtgArr ? (
+        {!searchedCards ? (
           <h2>Please search for a card.</h2>
         ) : (
           <h2>Search for another card.</h2>
         )}
-        <form autoComplete="off" onSubmit={handelSubmit}>
+        <form onSubmit={handelSubmit}>
           <label htmlFor="name" className="name-label">
             Name:{' '}
           </label>
-          <div>
-            <input type="text" id="name" name="name" onChange={handleChange} />
-          </div>
+          <input type="text" id="name" name="name" onChange={handleChange} />
           <button onClick={handelSubmit}>Search</button>
         </form>
       </div>
       <div className="card">
-        {mtgArr?.map((cards, idx) => {
+        {searchedCards?.map((cards, idx) => {
           return (
             <div className="card-wapper" key={idx}>
               <p>{cards.name}</p>
