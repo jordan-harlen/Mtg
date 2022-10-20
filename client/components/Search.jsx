@@ -1,10 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { getFindApi } from '../apis/mtgGetApi'
+import { getFindApi, getAllCardNames } from '../apis/mtgGetApi'
 
 function Search() {
   const [mtgArr, setMtgObj] = useState(null)
   const [mtgName, setName] = useState('')
+  const [autoFill, setAutoFill] = useState([])
+
+  useEffect(() => {
+    getAllCardNames()
+      .then((res) => {
+        setAutoFill(res.data)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }, [])
+
+  useEffect(() => {
+    console.log(autoFill)
+  }, [autoFill])
 
   const handleChange = (evt) => {
     setName(evt.target.value)
@@ -28,11 +43,13 @@ function Search() {
         ) : (
           <h2>Search for another card.</h2>
         )}
-        <form onSubmit={handelSubmit}>
+        <form autoComplete="off" onSubmit={handelSubmit}>
           <label htmlFor="name" className="name-label">
             Name:{' '}
           </label>
-          <input type="text" id="name" name="name" onChange={handleChange} />
+          <div>
+            <input type="text" id="name" name="name" onChange={handleChange} />
+          </div>
           <button onClick={handelSubmit}>Search</button>
         </form>
       </div>
