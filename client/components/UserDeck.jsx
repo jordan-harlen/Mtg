@@ -6,10 +6,21 @@ import { getUserDeck, getCardById } from '../apis/mtgGetApi'
 function UserDeck() {
   const [cardId, setCardId] = useState([])
   const [userDeck, setUserDeck] = useState([])
+  const [deck, setDeck] = useState([])
 
   let { id } = useParams()
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   getMtgApi()
+  //     .then((res) => {
+  //       setMtgArr(res.cards)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message)
+  //     })
+  // }, [])
+
+  function getUserId() {
     getUserDeck(id)
       .then((res) => {
         const newArr = []
@@ -24,16 +35,33 @@ function UserDeck() {
       .catch((err) => {
         console.log(err.message)
       })
-  }, [])
+  }
 
-  useEffect(() => {
-    console.log(cardId)
+  // useEffect(() => {
+  //   getUserDeck(id)
+  //     .then((res) => {
+  //       const newArr = []
+  //       res.map((cards) => {
+  //         newArr.push(cards.card_id)
+  //       })
+  //       setCardId(newArr)
+  //     })
+  //     .then(() => {
+  //       console.log('logging cardId' + cardId)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message)
+  //     })
+  // }, [])
+
+  function showDeck() {
     const newArr = []
     cardId.map((id) => {
       getCardById(id)
         .then((res) => {
           res.cards.map((res) => {
             newArr.push(res)
+            console.log(newArr)
           })
           setUserDeck(newArr)
         })
@@ -41,16 +69,41 @@ function UserDeck() {
           console.log(err.message)
         })
     })
-  }, [cardId])
+  }
+
+  function displayDeck() {
+    setDeck(userDeck)
+  }
+
+  // useEffect(() => {
+  //   console.log(cardId)
+  //   const newArr = []
+  //   cardId.map((id) => {
+  //     getCardById(id)
+  //       .then((res) => {
+  //         res.cards.map((res) => {
+  //           newArr.push(res)
+  //           console.log(newArr)
+  //         })
+  //         setUserDeck(newArr)
+  //       })
+  //       .catch((err) => {
+  //         console.log(err.message)
+  //       })
+  //   })
+  // }, [cardId])
 
   useEffect(() => {
-    console.log(userDeck)
-  }, [userDeck])
+    console.log(cardId)
+  }, [cardId])
 
   return (
     <div className="flex-child">
+      <button onClick={getUserId}>Generate</button>
+      <button onClick={showDeck}>Display</button>
+      <button onClick={displayDeck}>Show me the money</button>
       <div className="card">
-        {userDeck?.map((cards, idx) => {
+        {deck?.map((cards, idx) => {
           return (
             <div className="card-wapper" key={idx}>
               <p>{cards?.name}</p>
