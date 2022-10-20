@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
-import { getCardsByPage } from '../apis/mtgApi'
+import { getCardsByPage, savedCard } from '../apis/mtgApi'
 
 function Mtg() {
+  let { id } = useParams()
   const [cardsPage, setCardsPage] = useState(null)
   const [pageCounter, setPageCounter] = useState(1)
 
@@ -30,6 +32,16 @@ function Mtg() {
     }
   }
 
+  const onClickSave = (id, cardData) => {
+    const data = {
+      user_id: id,
+      card_id: cardData.id,
+      name: cardData.name,
+      imageUrl: cardData.imageUrl,
+    }
+    return savedCard(id, data)
+  }
+
   return (
     <div className="flex-child">
       <div className="page-buttons">
@@ -50,7 +62,7 @@ function Mtg() {
                 />
               )}
               <div className="add-button">
-                <button>Add</button>
+                <button onClick={() => onClickSave(id, cards)}>Add</button>
               </div>
             </div>
           )

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-import { getCardByName } from '../apis/mtgApi'
+import { getCardByName, savedCard } from '../apis/mtgApi'
 
 function Search() {
+  let { id } = useParams()
   const [searchedCards, setSearchedCards] = useState(null)
   const [cardName, setCardName] = useState('')
 
@@ -18,6 +20,16 @@ function Search() {
       .catch((err) => {
         console.error(err.message)
       })
+  }
+
+  const onClickSave = (id, cardData) => {
+    const data = {
+      user_id: id,
+      card_id: cardData.id,
+      name: cardData.name,
+      imageUrl: cardData.imageUrl,
+    }
+    return savedCard(id, data)
   }
 
   return (
@@ -49,8 +61,8 @@ function Search() {
                   alt="back of the card"
                 />
               )}
-              <div>
-                <button>ADD</button>
+              <div className="add-button">
+                <button onClick={() => onClickSave(id, cards)}>ADD</button>
               </div>
             </div>
           )

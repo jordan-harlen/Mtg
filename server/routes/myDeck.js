@@ -20,12 +20,12 @@ router.get('/saved/:userId', (req, res) => {
 
 router.post('/saved/:userId', (req, res) => {
   const user_id = req.params.userId
-  const { card_id, name, img_url } = req.body
+  const { card_id, name, imageUrl } = req.body
   const postData = {
     user_id,
     card_id,
     name,
-    img_url
+    imageUrl
   }
 
   db.insertUsersDeck(user_id, postData)

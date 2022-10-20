@@ -44,3 +44,14 @@ export function getUserDeck(id) {
       console.log('Err message: ' + err.message)
     })
 }
+
+export function savedCard(id, newCard) {
+  //const data = { id, newCard }
+  console.log(newCard)
+  return request
+    .post(`/api/v1/myDeck/saved/${id}`)
+    .send(newCard)
+    .catch((err) => {
+      console.log('err message: ' + err.message);
+    })
+}
