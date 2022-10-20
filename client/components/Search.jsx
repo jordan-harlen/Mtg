@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { getFindApi } from '../apis/mtgGetApi'
 
-function Mtg() {
+function Search() {
   const [mtgArr, setMtgObj] = useState(null)
   const [mtgName, setName] = useState('')
 
@@ -60,4 +60,4 @@ function Mtg() {
   )
 }
 
-export default Mtg
+export default Search

@@ -13,6 +13,7 @@ function Nav() {
     const confirmSuccess = () => navigateTo('/')
     dispatch(logoutUser(confirmSuccess))
   }
+
   return (
     <>
       <div className="nav-title">
