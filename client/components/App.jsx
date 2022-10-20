@@ -29,8 +29,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/allcards" element={<AllCards />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/allcards/:id" element={<AllCards />} />
+        <Route path="/search/:id" element={<Search />} />
         <Route path="/userdeck/:id" element={<UserDeck />} />
       </Routes>
       <section className="main">{/* add your code here */}</section>

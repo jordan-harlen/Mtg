@@ -25,8 +25,8 @@ function UserDeck() {
           return (
             <div className="card-wapper" key={idx}>
               <p>{cards?.name}</p>
-              {cards?.img_url ? (
-                <img src={cards?.img_url} alt={cards?.name} />
+              {cards?.imageUrl ? (
+                <img src={cards?.imageUrl} alt={cards?.name} />
               ) : (
                 <img
                   src="https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Magic_the_gathering-card_back.jpg/200px-Magic_the_gathering-card_back.jpg"
