@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { getUserDeck, getCardById } from '../apis/mtgGetApi'
+import { getUserDeck, getCardById, getDeck } from '../apis/mtgGetApi'
 
 function UserDeck() {
   const [cardId, setCardId] = useState([])
@@ -57,17 +57,19 @@ function UserDeck() {
   function showDeck() {
     const newArr = []
     cardId.map((id) => {
-      getCardById(id)
-        .then((res) => {
-          res.cards.map((res) => {
-            newArr.push(res)
-            console.log(newArr)
+      setTimeout(() => {
+        getCardById(id)
+          .then((res) => {
+            res.cards.map((res) => {
+              newArr.push(res)
+              console.log(newArr)
+            })
+            setUserDeck(newArr)
           })
-          setUserDeck(newArr)
-        })
-        .catch((err) => {
-          console.log(err.message)
-        })
+          .catch((err) => {
+            console.log(err.message)
+          })
+      }, 500)
     })
   }
 

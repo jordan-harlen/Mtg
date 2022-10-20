@@ -18,8 +18,8 @@ function Search() {
   }, [])
 
   useEffect(() => {
-    console.log(autoFill)
-  }, [autoFill])
+    console.log(mtgArr)
+  }, [mtgArr])
 
   const handleChange = (evt) => {
     setName(evt.target.value)
