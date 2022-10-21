@@ -34,9 +34,9 @@ function App() {
         <Route path="/search/:id" element={<Search />} />
         <Route path="/userdeck/:id" element={<UserDeck />} />
       </Routes>
-      <footer className="footer">
+      {/* <footer className="footer">
         <Footer />
-      </footer>
+      </footer> */}
       <section className="main">{/* add your code here */}</section>
     </>
   )

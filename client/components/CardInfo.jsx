@@ -3,38 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { getUserDeck, deleteUserCard, deleteUserDeck } from '../apis/mtgApi'
 
-function UserDeck() {
-  const [userDeck, setUserDeck] = useState(null)
-  const [deleted, setDeleted] = useState(false)
-
-  let { id } = useParams()
-
-  useEffect(() => {
-    getUserDeck(id)
-      .then((res) => {
-        sortBytype(res)
-        setUserDeck(res)
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
-  }, [deleted])
-
-  function handleCardDelete(id, cardId) {
-    deleteUserCard(id, cardId)
-    setDeleted(!deleted)
-  }
-
-  function handleDeckDelete(id) {
-    deleteUserDeck(id)
-    setDeleted(!deleted)
-  }
-
-  function sortBytype(arr) {
-    const results = arr?.sort((a, b) => a?.name.localeCompare(b.name))
-    results?.sort((a, b) => b?.cmc - a?.cmc)
-    return results
-  }
+function CardInfo() {
 
   return (
     <div className="flex-child">
@@ -71,4 +40,4 @@ function UserDeck() {
   )
 }
 
-export default UserDeck
+export default CardInfo
