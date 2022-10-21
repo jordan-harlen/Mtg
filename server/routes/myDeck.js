@@ -26,16 +26,39 @@ router.post('/saved/:userId', (req, res) => {
     manaCost,
     colors,
     type,
-    imageUrl
+    imageUrl,
   }
 
   db.insertUsersDeck(user_id, postData)
     .then(() => {
-
       res.sendStatus(201)
     })
     .catch((err) => {
       console.log('Error in Sever ' + err.message)
+    })
+})
+
+router.delete('/saved/:userId/remove/:id', (req, res) => {
+  const id = req.params.id
+
+  db.removeUsersCard(id)
+    .then((removed) => {
+      res.json(removed)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+})
+
+router.delete('/saved/:userId/remove', (req, res) => {
+  const id = req.params.userId
+
+  db.removeUserDeck(id)
+    .then((removed) => {
+      res.json(removed)
+    })
+    .catch((err) => {
+      console.log(err.message)
     })
 })
 
