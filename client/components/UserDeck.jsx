@@ -11,6 +11,7 @@ function UserDeck() {
   useEffect(() => {
     getUserDeck(id)
       .then((res) => {
+        sortBytype(res)
         setUserDeck(res)
       })
       .catch((err) => {
@@ -18,21 +19,21 @@ function UserDeck() {
       })
   }, [])
 
+  function sortBytype(arr) {
+    const results = arr?.sort((a, b) => a?.name.localeCompare(b.name))
+    results?.sort((a, b) => b?.cmc - a?.cmc)
+    return results
+  }
+
   return (
     <div className="flex-child">
-      <div className="card">
+      <div className="card-userdeck">
         {userDeck?.map((cards, idx) => {
           return (
-            <div className="card-wapper" key={idx}>
-              <p>{cards?.name}</p>
-              {cards?.imageUrl ? (
+            <div className="card-wapper-userdeck" key={idx}>
+              <div>
                 <img src={cards?.imageUrl} alt={cards?.name} />
-              ) : (
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Magic_the_gathering-card_back.jpg/200px-Magic_the_gathering-card_back.jpg"
-                  alt="back of the card"
-                />
-              )}
+              </div>
             </div>
           )
         })}
