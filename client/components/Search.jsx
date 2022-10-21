@@ -10,7 +10,6 @@ function Search() {
 
   const handleChange = (evt) => {
     setCardName(evt.target.value)
-    console.log(evt.target.value)
   }
 
   const handelSubmit = (evt) => {
@@ -54,21 +53,18 @@ function Search() {
       </div>
       <div className="card">
         {searchedCards?.map((cards, idx) => {
-          return (
-            <div className="card-wapper" key={idx}>
-              <p>{cards.name}</p>
-              {cards.imageUrl ? (
+          return cards.imageUrl ? (
+            <>
+              <div className="card-wapper" key={idx}>
+                <p>{cards.name}</p>
                 <img src={cards.imageUrl} alt={cards.name} />
-              ) : (
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Magic_the_gathering-card_back.jpg/200px-Magic_the_gathering-card_back.jpg"
-                  alt="back of the card"
-                />
-              )}
-              <div className="add-button">
-                <button onClick={() => onClickSave(id, cards)}>ADD</button>
+                <div className="add-button">
+                  <button onClick={() => onClickSave(id, cards)}>Add</button>
+                </div>
               </div>
-            </div>
+            </>
+          ) : (
+            <></>
           )
         })}
       </div>

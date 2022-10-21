@@ -38,7 +38,6 @@ export function getUserDeck(id) {
   return request
     .get(`/api/v1/myDeck/saved/${id}`)
     .then((res) => {
-      console.log(res.body)
       return res.body
     })
     .catch((err) => {
@@ -51,6 +50,12 @@ export function savedCard(id, newCard) {
     .post(`/api/v1/myDeck/saved/${id}`)
     .send(newCard)
     .catch((err) => {
-      console.log('err message: ' + err.message);
+      console.log('err message: ' + err.message)
     })
+}
+
+export function deleteCard(id) {
+  return request.delete(`/api/v1/myDeck/saved/${id}`).catch((err) => {
+    console.log('err message: ' + err.message)
+  })
 }

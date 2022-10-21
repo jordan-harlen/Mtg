@@ -22,11 +22,11 @@ function Nav() {
       <div className="nav-container">
         <div className="nav-main">
           <Link to="/">Home</Link>
-          <Link to={`/allcards/${auth.user.id}`}>All Cards</Link>
-          <Link to={`/search/${auth.user.id}`}>Search</Link>
+          <Link to={`/allcards/${auth?.user?.id}`}>All Cards</Link>
+          <Link to={`/search/${auth?.user?.id}`}>Search</Link>
           {auth.isAuthenticated ? (
             <>
-              <Link to={`/userdeck/${auth.user.id}`}>My Deck</Link>
+              <Link to={`/userdeck/${auth?.user?.id}`}>My Deck</Link>
               <Link to="/" onClick={logout} className="title-font">
                 Logout
               </Link>

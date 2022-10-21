@@ -34,38 +34,39 @@ function Login() {
   }
 
   return (
-    <form className="login-from" onSubmit={handleSubmit}>
-      <h2 className="login-title title-font">Login</h2>
-      <hr />
+    <>
+      <h2 className="login-title">Login</h2>
       {auth.errorMessage && (
         <span className="login-error">{auth.errorMessage}</span>
       )}
-      <label className="login-user">
-        Username
-        <input
-          required
-          placeholder="User Name"
-          type="text"
-          name="username"
-          autoComplete="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
-      </label>
-      <label className="login-password">
-        Password
-        <input
-          required
-          placeholder="Password"
-          type="password"
-          name="password"
-          autoComplete="current-password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-      </label>
-      <input className="login-button" value="Login" type="submit" />
-    </form>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <label className="login-username">
+          Username:
+          <input
+            required
+            placeholder="User Name"
+            type="text"
+            name="username"
+            autoComplete="username"
+            value={formData.username}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="login-password">
+          Password:
+          <input
+            required
+            placeholder="Password"
+            type="password"
+            name="password"
+            autoComplete="current-password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </label>
+        <input className="login-button" value="Login" type="submit" />
+      </form>
+    </>
   )
 }
 
