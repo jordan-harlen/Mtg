@@ -13,7 +13,17 @@ async function insertUsersDeck(userId, cardData, db = conn) {
   return await db('myDeck').where('user_id', userId).insert(cardData)
 }
 
+async function removeUsersCard(id, db = conn) {
+  return await db('myDeck').where('id', id).del()
+}
+
+async function removeUserDeck(id, db = conn) {
+  return await db('myDeck').where('user_id', id).del()
+}
+
 module.exports = {
   insertUsersDeck,
   getUserDeck,
+  removeUsersCard,
+  removeUserDeck,
 }

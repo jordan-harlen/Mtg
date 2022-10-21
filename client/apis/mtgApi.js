@@ -54,8 +54,18 @@ export function savedCard(id, newCard) {
     })
 }
 
-export function deleteCard(id) {
-  return request.delete(`/api/v1/myDeck/saved/${id}`).catch((err) => {
-    console.log('err message: ' + err.message)
-  })
+export function deleteUserCard(userId, cardId) {
+  return request
+    .delete(`/api/v1/myDeck/saved/${userId}/remove/${cardId}`)
+    .catch((err) => {
+      console.log('err message: ' + err.message)
+    })
+}
+
+export function deleteUserDeck(userId) {
+  return request
+    .delete(`/api/v1/myDeck/saved/${userId}/remove`)
+    .catch((err) => {
+      console.log('err message: ' + err.message)
+    })
 }
