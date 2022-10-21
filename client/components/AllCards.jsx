@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { getCardsByPage, savedCard } from '../apis/mtgApi'
 
-function Mtg() {
+function AllCards() {
   let { id } = useParams()
   const [cardsPage, setCardsPage] = useState(null)
   const [pageCounter, setPageCounter] = useState(1)
@@ -21,6 +21,11 @@ function Mtg() {
   async function nextPage() {
     const page = (await pageCounter) + 1
     setPageCounter(page)
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    })
   }
 
   async function previousPage() {
@@ -29,6 +34,11 @@ function Mtg() {
       setPageCounter(1)
     } else {
       setPageCounter(page)
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })
     }
   }
 
@@ -54,21 +64,18 @@ function Mtg() {
       </div>
       <div className="card">
         {cardsPage?.map((cards, idx) => {
-          return (
-            <div className="card-wapper" key={idx}>
-              <p>{cards.name}</p>
-              {cards.imageUrl ? (
+          return cards.imageUrl ? (
+            <>
+              <div className="card-wapper" key={idx}>
+                <p>{cards.name}</p>
                 <img src={cards.imageUrl} alt={cards.name} />
-              ) : (
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Magic_the_gathering-card_back.jpg/200px-Magic_the_gathering-card_back.jpg"
-                  alt="back of the card"
-                />
-              )}
-              <div className="add-button">
-                <button onClick={() => onClickSave(id, cards)}>Add</button>
+                <div className="add-button">
+                  <button onClick={() => onClickSave(id, cards)}>Add</button>
+                </div>
               </div>
-            </div>
+            </>
+          ) : (
+            <></>
           )
         })}
       </div>
@@ -80,4 +87,4 @@ function Mtg() {
   )
 }
 
-export default Mtg
+export default AllCards

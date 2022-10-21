@@ -20,6 +20,11 @@ function Register() {
     dispatch(loginError(''))
   }, [])
 
+  function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/
+    return re.test(email)
+  }
+
   const handleChange = (e) => {
     setFormData((prevFormData) => {
       return {
@@ -37,6 +42,8 @@ function Register() {
 
     if (confirm_password != password) {
       dispatch(loginError("Passwords don't match"))
+    } else if (validateEmail(formData.email_address) === false) {
+      dispatch(loginError('Please enter a valid email'))
     } else {
       const confirmSuccess = () => navigateTo('/')
       const userInfo = { ...formData }
@@ -47,16 +54,17 @@ function Register() {
 
   return (
     <>
-      <div className="register-title">
-        <h2>Register</h2>
-      </div>
+      <h2 className="register-title">Register</h2>
       <div className="register-form">
         <form onSubmit={handleSubmit}>
-          {auth.errorMessage && <span>{auth.errorMessage}</span>}
+          {auth.errorMessage && (
+            <span className="register-error">{auth.errorMessage}</span>
+          )}
 
           <label>
             Username:
             <input
+              className="username"
               required
               placeholder="User Name"
               type="text"
@@ -69,6 +77,7 @@ function Register() {
           <label>
             Email Address:
             <input
+              className="email"
               required
               placeholder="Email Adress"
               type="text"
@@ -80,6 +89,7 @@ function Register() {
           <label>
             Password:
             <input
+              className="password"
               required
               placeholder="Password"
               type="password"
@@ -89,18 +99,19 @@ function Register() {
               value={formData.password}
             />
           </label>
-          <label>
+          <label className="confirm-password">
             Confirm Password:
             <input
               required
               type="password"
+              placeholder="Confirm Password"
               name="confirm_password"
               autoComplete="new-password"
               onChange={handleChange}
               value={formData.confirm_password}
             />
           </label>
-          <input value="Register" type="submit" />
+          <input className="register-button" value="Register" type="submit" />
         </form>
       </div>
     </>

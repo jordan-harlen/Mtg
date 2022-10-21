@@ -15,5 +15,5 @@ async function insertUsersDeck(userId, cardData, db = conn) {
 
 module.exports = {
   insertUsersDeck,
-  getUserDeck
+  getUserDeck,
 }
