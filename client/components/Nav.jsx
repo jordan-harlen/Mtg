@@ -16,9 +16,9 @@ function Nav() {
 
   return (
     <>
-      <div className="nav-title">
+      {/* <div className="nav-title">
         <h1>MTG Deckbuilder</h1>
-      </div>
+      </div> */}
       <div className="nav-container">
         <div className="nav-main">
           <Link to="/">Home</Link>

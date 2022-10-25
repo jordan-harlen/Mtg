@@ -6,12 +6,17 @@
   font-size: xxx-large;
   background-color: black;
   color: white;
-
+  transition: all 200ms ease;
   & h1 {
     margin: 0;
     margin-top: 20px;
   }
 }
+
+.nav-title {
+transition: all 200ms ease;
+}
+
 
 .nav-container {
   background-color: black;
