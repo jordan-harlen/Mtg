@@ -1,15 +1,8 @@
-@keyframes slideCardDown {
-  0% {
-    transform: translateY(50%)
-  }
-  100% {
-    transform: translateY(-50%)
-  }
-}
 
 .home {
   display: flex;
   flex-direction: column;
+  background-color: black;
   align-items: center;
   min-width: 100vh;
   min-height: 100vh;
@@ -25,7 +18,9 @@
     padding: 0;
     scroll-snap-align: start;
   }
-
+  & p {
+    font-size: 15px;
+  }
 }
 
 .home-one {
@@ -37,12 +32,7 @@
       min-width: 100vh;
       min-height: 100vh; 
     }
-    & .box-content {
-      //background-color: aqua;
-      border-color: azure;
-      text-align: center;
-     }
-}
+  }
 
 
 .home-two {
@@ -54,6 +44,8 @@
 .box-one {
   
   margin: 0;
+  margin-top: 5px;
+  margin-right: 2.5px;
   padding: 0;
   width: 50%;
   align-items: center;
@@ -61,33 +53,58 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-image: url('/server/public/images/box-one.jpeg');
-  //animation: 1s ease-out 0s 1 slideCardDown;
-  
-  & .box-content {
-    //background-color: aqua;
-    border-color: azure;
-    text-align: center;
-   }
+
 }
 
 .box-two { 
   
   margin: 0;
+  margin-top: 5px;
+  margin-left: 2.5px;
   padding: 0;
   width: 50%;
   align-items: center;
-  background-image: url('/server/public/images/box-two.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  background-image: url('/server/public/images/box-two.jpeg');
   
-  & .box-content {
-    //background-color: aqua;
-    border-color: azure;
-    text-align: center;
-   }
 }
 
-.blocktext {
-  align-items: center;
-}
+.box-content {
+  margin: 100px 0 100px 100px;
+  border-color: azure;
+  background-color: rgba(255, 255, 255, 0.286);
+  border-radius: 10px;
+  max-width: 250px;
+  height: 250px;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 10px;
+ }
+ 
+
+ .box-nav-container {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  
+  
+  & a {
+    text-decoration: none;
+    margin: 10px;
+    font-size: 24px;
+    color:white;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  & a:hover { 
+    color: rgb(37, 36, 36);
+    background-color: rgba(0, 0, 0, 0.17);
+  }
+  }
