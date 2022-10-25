@@ -1,3 +1,12 @@
+@keyframes slideCardDown {
+  0% {
+    transform: translateX(0%)
+  }
+  100% {
+    transform: translateX(-100%)
+  }
+}
+
 .card-userdeck{
   display: flex;
   //flex-direction: column;
@@ -18,7 +27,7 @@
   min-width: 300px;
   max-width: 300px;
   margin: 15px;
-  margin-bottom: -320px;
+  margin-bottom: -360px;
   border-radius: 6px;
   text-align: center;
   transition: all 200ms ease;
@@ -33,6 +42,7 @@
   transition: all 200ms ease;
   transform: scale(1.1);
   margin-bottom: 0;
+  //animation: 1s ease-out 0s 1 slideCardDown;
 }
 
 .delete-deck {
