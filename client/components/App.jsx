@@ -9,6 +9,7 @@ import Nav from './Nav'
 import AllCards from './AllCards'
 import Search from './Search'
 import UserDeck from './UserDeck'
+
 //import Footer from './Footer'
 
 import { checkAuth } from '../actions/auth'
