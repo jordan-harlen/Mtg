@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import { getCardsByPage, savedCard } from '../apis/mtgApi'
 
@@ -68,7 +68,9 @@ function AllCards() {
             <>
               <div className="card-wapper" key={idx}>
                 <p>{cards.name}</p>
-                <img src={cards.imageUrl} alt={cards.name} />
+                <Link to={`/cardinfo/${cards.id}`}>
+                  <img src={cards.imageUrl} alt={cards.name} />
+                </Link>
                 <div className="add-button">
                   <button onClick={() => onClickSave(id, cards)}>Add</button>
                 </div>
