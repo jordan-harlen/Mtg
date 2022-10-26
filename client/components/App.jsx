@@ -37,7 +37,6 @@ function App() {
         <Route path="/cardinfo/:id" element={<CardInfo />} />
       </Routes>
       <footer className="footer">{/* <Footer /> */}</footer>
-      <section className="main">{/* add your code here */}</section>
     </>
   )
 }
