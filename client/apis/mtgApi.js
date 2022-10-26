@@ -34,6 +34,17 @@ export function getCardById(id) {
     })
 }
 
+export function getCardNames() {
+  return request
+    .get(`https://api.scryfall.com/catalog/card-names`)
+    .then((res) => {
+      return res.body
+    })
+    .catch((err) => {
+      console.log('Err message: ' + err.message)
+    })
+}
+
 export function getUserDeck(id) {
   return request
     .get(`/api/v1/myDeck/saved/${id}`)
