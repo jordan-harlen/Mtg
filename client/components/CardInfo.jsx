@@ -1,38 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { getUserDeck, deleteUserCard, deleteUserDeck } from '../apis/mtgApi'
+import { getCardById } from '../apis/mtgApi'
 
 function CardInfo() {
+  const [card, setCard] = useState(null)
+
+  const { id } = useParams()
+
+  useEffect(() => {
+    console.log(id)
+    getCardById(id)
+      .then((res) => {
+        setCard(res)
+      })
+      .then(() => {
+        console.log(card)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }, [])
 
   return (
     <div className="flex-child">
-      <div className="delete-deck">
-        <button
-          onClick={() => {
-            handleDeckDelete(id)
-          }}
-        >
-          Delete Deck
-        </button>
-      </div>
-      <div className="card-userdeck">
-        {userDeck?.map((cards, idx) => {
+      <div className="card-info">
+        {card?.cards.map((oneCard, idx) => {
           return (
-            <div className="card-wapper-userdeck" key={idx}>
-              <div>
-                <img src={cards?.imageUrl} alt={cards?.name} />
+            card && (
+              <div className="card-wrapper-info" key={idx}>
+                <h2>{oneCard.name}</h2>
+                <img src={oneCard?.imageUrl} alt={oneCard?.name} />
+                <p>Mana Cost: {oneCard.manaCost}</p>
+                <p>CMC: {oneCard.cmc}</p>
+                <p>Effect: {oneCard.text}</p>
               </div>
-              <div className="delete-card">
-                <button
-                  onClick={() => {
-                    handleCardDelete(id, cards.id)
-                  }}
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
+            )
           )
         })}
       </div>

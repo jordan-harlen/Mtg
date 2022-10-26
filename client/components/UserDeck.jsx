@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import { getUserDeck, deleteUserCard, deleteUserDeck } from '../apis/mtgApi'
 
@@ -52,7 +52,9 @@ function UserDeck() {
           return (
             <div className="card-wapper-userdeck" key={idx}>
               <div>
-                <img src={cards?.imageUrl} alt={cards?.name} />
+                <Link to={`/cardinfo/${cards.card_id}`}>
+                  <img src={cards?.imageUrl} alt={cards?.name} />
+                </Link>
               </div>
               <div className="delete-card">
                 <button
