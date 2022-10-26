@@ -9,7 +9,7 @@ import Nav from './Nav'
 import AllCards from './AllCards'
 import Search from './Search'
 import UserDeck from './UserDeck'
-
+import CardInfo from './CardInfo'
 //import Footer from './Footer'
 
 import { checkAuth } from '../actions/auth'
@@ -34,6 +34,7 @@ function App() {
         <Route path="/allcards/:id" element={<AllCards />} />
         <Route path="/search/:id" element={<Search />} />
         <Route path="/userdeck/:id" element={<UserDeck />} />
+        <Route path="/cardinfo/:id" element={<CardInfo />} />
       </Routes>
       <footer className="footer">{/* <Footer /> */}</footer>
       <section className="main">{/* add your code here */}</section>

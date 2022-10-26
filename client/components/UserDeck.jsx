@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import { getUserDeck, deleteUserCard, deleteUserDeck } from '../apis/mtgApi'
-import Chart from './Chart'
 
 function UserDeck() {
   const [userDeck, setUserDeck] = useState(null)
@@ -20,10 +19,6 @@ function UserDeck() {
         console.log(err.message)
       })
   }, [deleted])
-
-  useEffect(() => {
-    //console.log(userDeck)
-  }, [userDeck])
 
   function handleCardDelete(id, cardId) {
     deleteUserCard(id, cardId)
@@ -58,7 +53,9 @@ function UserDeck() {
             return (
               <div className="card-wapper-userdeck" key={idx}>
                 <div>
-                  <img src={cards?.imageUrl} alt={cards?.name} />
+                  <Link to={`/cardinfo/${cards.card_id}`}>
+                    <img src={cards?.imageUrl} alt={cards?.name} />
+                  </Link>
                 </div>
                 <div className="delete-card">
                   <button
@@ -74,11 +71,7 @@ function UserDeck() {
           })}
         </div>
       </section>
-      <section>
-        <div>
-          <Chart />
-        </div>
-      </section>
+      <section></section>
     </div>
   )
 }
