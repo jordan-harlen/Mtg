@@ -38,37 +38,39 @@ function UserDeck() {
 
   return (
     <div className="flex-child">
-      <div className="delete-deck">
-        <button
-          onClick={() => {
-            handleDeckDelete(id)
-          }}
-        >
-          Delete Deck
-        </button>
-      </div>
-      <div className="card-userdeck">
-        {userDeck?.map((cards, idx) => {
-          return (
-            <div className="card-wapper-userdeck" key={idx}>
-              <div>
-                <Link to={`/cardinfo/${cards.card_id}`}>
-                  <img src={cards?.imageUrl} alt={cards?.name} />
-                </Link>
+      <section>
+        <div className="delete-deck">
+          <button
+            onClick={() => {
+              handleDeckDelete(id)
+            }}
+          >
+            Delete Deck
+          </button>
+        </div>
+        <div className="card-userdeck">
+          {userDeck?.map((cards, idx) => {
+            return (
+              <div className="card-wapper-userdeck" key={idx}>
+                <div>
+                  <Link to={`/cardinfo/${cards.card_id}`}>
+                    <img src={cards?.imageUrl} alt={cards?.name} />
+                  </Link>
+                </div>
+                <div className="delete-card">
+                  <button
+                    onClick={() => {
+                      handleCardDelete(id, cards.id)
+                    }}
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
-              <div className="delete-card">
-                <button
-                  onClick={() => {
-                    handleCardDelete(id, cards.id)
-                  }}
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      </section>
     </div>
   )
 }
