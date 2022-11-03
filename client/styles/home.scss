@@ -1,3 +1,20 @@
+@keyframes fade-left {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
 
 .home {
   display: flex;
@@ -56,6 +73,12 @@
 
 }
 
+.box-one-fade {
+  animation-duration: 1s;
+  animation-name: fade-left;
+}
+
+
 .box-two { 
   
   margin: 0;
@@ -71,6 +94,11 @@
   
 }
 
+.box-two-fade {
+  animation-duration: 1s;
+  animation-name: fade-right;
+}
+
 .box-content {
   margin: 100px 0 100px 100px;
   border-color: azure;
@@ -81,11 +109,17 @@
   text-align: center;
   border: 1px solid white;
   border-radius: 10px;
+  & h2 {
+    text-decoration: none;
+    margin: 10px;
+    font-size: 24px;
+    color:white;
+  }
  }
  
 
  .box-nav-container {
-  padding: 30px;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -106,5 +140,6 @@
   & a:hover { 
     color: rgb(37, 36, 36);
     background-color: rgba(0, 0, 0, 0.17);
+    }
   }
-  }
+

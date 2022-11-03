@@ -71,7 +71,6 @@ function UserDeck() {
           })}
         </div>
       </section>
-      <section></section>
     </div>
   )
 }

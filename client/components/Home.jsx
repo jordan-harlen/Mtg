@@ -1,5 +1,5 @@
 import React from 'react'
-import Fade from 'react-reveal/Fade'
+import { useInView } from 'react-intersection-observer'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -9,6 +9,7 @@ function Home() {
   const navigateTo = useNavigate()
   const auth = useSelector((state) => state.auth)
   const dispatch = useDispatch()
+  const { ref: myRef, inView: myEleIsVisable } = useInView()
 
   const logout = () => {
     const confirmSuccess = () => navigateTo('/')
@@ -25,40 +26,40 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="home-two">
-        <Fade left>
-          <div className="box-one">
-            <div className="box-content">
-              <h2 className="blocktext">build deck</h2>
-              <div className="box-nav-container">
-                <Link to={`/allcards/${auth?.user?.id}`}>All Cards</Link>
-                <Link to={`/search/${auth?.user?.id}`}>Search</Link>
-              </div>
+      <section ref={myRef} className="home-two">
+        {/* <Fade left> */}
+        <div className={`${'box-one'} ${myEleIsVisable ? 'box-one-fade' : ''}`}>
+          <div className="box-content">
+            <h2 className="blocktext">Build Deck</h2>
+            <div className="box-nav-container">
+              <Link to={`/allcards/${auth?.user?.id}`}>All Cards</Link>
+              <Link to={`/search/${auth?.user?.id}`}>Search</Link>
             </div>
           </div>
-        </Fade>
-        <Fade right>
-          <div className="box-two">
-            <div className="box-content">
-              <h2 className="blocktext">view deck</h2>
-              <div className="box-nav-container">
-                {auth.isAuthenticated ? (
-                  <>
-                    <Link to={`/userdeck/${auth?.user?.id}`}>My Deck</Link>
-                    <Link to="/" onClick={logout} className="title-font">
-                      Logout
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
-                  </>
-                )}
-              </div>
+        </div>
+        {/* </Fade> */}
+        {/* <Fade right> */}
+        <div className={`${'box-two'} ${myEleIsVisable ? 'box-two-fade' : ''}`}>
+          <div className="box-content">
+            <h2 className="blocktext">View Deck</h2>
+            <div className="box-nav-container">
+              {auth.isAuthenticated ? (
+                <>
+                  <Link to={`/userdeck/${auth?.user?.id}`}>My Deck</Link>
+                  <Link to="/" onClick={logout} className="title-font">
+                    Logout
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/login">Login</Link>
+                  <Link to="/register">Register</Link>
+                </>
+              )}
             </div>
           </div>
-        </Fade>
+        </div>
+        {/* </Fade> */}
       </section>
     </div>
   )
