@@ -1,1 +1,1 @@
-Kris and Jordon MTG deck builder
+Kris and Jordan MTG deck builder
