@@ -14,6 +14,7 @@ This app is built with the following technologies:
 - JavaScript
 - Express
 - Sqlite3
+- JWT-Auth
 
 ## Getting Started
 
