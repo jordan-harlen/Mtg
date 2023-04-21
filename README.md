@@ -4,6 +4,9 @@ This is a web application that allows users to create and save Magic: The Gather
 
 This was a group project I worked on with https://github.com/kristofferbacaling after graduation from Dev Academy Aotearoa.
 
+The objective to this project was to be able to solidify our learning after graduating from Dev Academy by practising the things we had learnt.
+We also wanted to stretch ourselves by attempting things we hadn't tried, for example an auto complete form.
+
 ## Technologies Used
 
 This app is built with the following technologies:
